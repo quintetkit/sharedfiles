@@ -101,8 +101,14 @@ squash merge なら一致しますが、1つのブランチが20個の小さい�
 **あちらは宣言が要ります。こちらは何も要りません。**
 まだ整理していないリポジトリには、こちらを先に使ってください。
 
+[ccheck](https://github.com/quintetkit/ccheck) は `.claude/` の設定を検査します。
+指摘には必ず公式ドキュメントへの出典が付きます。
+
 [Quartet](https://github.com/quintetkit/quartet) は、この2つが出てきた元の
 ワークフローです（Claude Code を設計・実装・レビュー・コンフリクト解消に分ける、MIT）。
+
+UI 設計人格・レビュー基準・Issue 単位の並列実行スクリプト・実践ガイド10章を足した
+[Quintet は有料](https://quartet-dev.booth.pm/items/8807156)です。
 
 ## ライセンス
 

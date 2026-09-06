@@ -106,9 +106,16 @@ from the other side: given Issues that declare which files they touch, which
 pairs overlap. **That one needs the declarations. This one needs nothing** — use
 it first, on a repository you have not organised yet.
 
+[ccheck](https://github.com/quintetkit/ccheck) lints `.claude/` configuration,
+citing the documentation for every finding.
+
 [Quartet](https://github.com/quintetkit/quartet) is the free MIT workflow both
 of them come from: Claude Code split into Architect / Coder / Reviewer /
 Conflict Resolver around GitHub Issues.
+
+A larger version with a UI Designer persona, the Reviewer's decision criteria,
+a per-Issue parallel execution script and a 10-chapter guide is
+[sold as Quintet](https://quintetkit.gumroad.com/l/quintet).
 
 ## License
 
