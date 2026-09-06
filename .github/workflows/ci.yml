@@ -1,0 +1,45 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        node: ["22.18", "24"]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 履歴を読む道具なので、浅いクローンでは自分を検査できない
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node test/run.ts
+      - name: npm に出す形（コンパイル済み）でも動くこと
+        run: |
+          npm install --silent
+          npm pack --silent
+          tmp=$(mktemp -d); cd "$tmp"
+          npm init -y > /dev/null
+          npm install --silent "$GITHUB_WORKSPACE"/quintetkit-sharedfiles-*.tgz
+          npx sharedfiles --help > /dev/null
+      - name: 既定では落ちないこと
+        run: |
+          node src/cli.ts . > /dev/null
+      - name: --max を超えたら 1 で終わること
+        run: |
+          set +e
+          node src/cli.ts . --max 0 > /dev/null
+          code=$?
+          set -e
+          [ "$code" = "1" ] || { echo "終了コードが $code（1 のはず）"; exit 1; }
+
+  self-check:
+    # 自分自身の履歴を自分で読む。動かないものは出さない
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: "24" }
+      - run: node src/cli.ts . --format github

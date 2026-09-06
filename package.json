@@ -1,0 +1,48 @@
+{
+  "name": "@quintetkit/sharedfiles",
+  "version": "1.0.0",
+  "description": "Finds where parallel work will collide, from git history alone. No tokens, no configuration.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "sharedfiles": "dist/cli.js"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "keywords": [
+    "git",
+    "parallel",
+    "conflicts",
+    "coupling",
+    "cli",
+    "developer-tools",
+    "claude-code",
+    "ai-assisted-development"
+  ],
+  "homepage": "https://github.com/quintetkit/sharedfiles#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quintetkit/sharedfiles.git"
+  },
+  "bugs": {
+    "url": "https://github.com/quintetkit/sharedfiles/issues"
+  },
+  "files": [
+    "dist",
+    "action.yml",
+    "README.md",
+    "README.ja.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node test/run.ts",
+    "build": "tsc -p tsconfig.json",
+    "prepare": "tsc -p tsconfig.json",
+    "prepack": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^26.4.1",
+    "typescript": "^5.9.3"
+  }
+}

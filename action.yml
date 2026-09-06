@@ -1,0 +1,31 @@
+name: sharedfiles
+description: Report the files that make parallel work collide, from git history
+branding:
+  icon: git-merge
+  color: orange
+
+inputs:
+  path:
+    description: repository to read
+    required: false
+    default: "."
+  limit:
+    description: how many commits to read
+    required: false
+    default: "300"
+  max:
+    description: fail if any file exceeds this share of commits (e.g. 0.4). Empty means never fail.
+    required: false
+    default: ""
+
+runs:
+  using: composite
+  steps:
+    - name: sharedfiles
+      shell: bash
+      run: |
+        set -euo pipefail
+        extra=""
+        if [ -n "${{ inputs.max }}" ]; then extra="--max ${{ inputs.max }}"; fi
+        node "${{ github.action_path }}/src/cli.ts" "${{ inputs.path }}" \
+          --limit "${{ inputs.limit }}" --format github $extra
