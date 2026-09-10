@@ -32,7 +32,7 @@ jobs:
           node src/cli.ts . --max 0 > /dev/null
           code=$?
           set -e
-          [ "$code" = "1" ] || { echo "終了コードが $code（1 のはず）"; exit 1; }
+          [ "$code" = "1" ] || { echo "終了コードが ${code}（1 のはず）"; exit 1; }
 
   self-check:
     # 自分自身の履歴を自分で読む。動かないものは出さない
