@@ -87,11 +87,20 @@ squash merge なら一致しますが、1つのブランチが20個の小さい�
 
 ## CI で
 
+CI で。**この action は TypeScript を直接実行するので、ランナーに Node 22.18
+以降が必要です。** 最初から入っている版が十分新しいとは限らず、このステップが
+無いと `ERR_UNKNOWN_FILE_EXTENSION` で落ちます（Node のバージョンには
+一言も触れないエラーです）。
+
 ```yaml
+- uses: actions/checkout@v5
+- uses: actions/setup-node@v5
+  with: { node-version: "22.18" }
 - uses: quintetkit/sharedfiles@v1
   with:
     max: "0.4"   # 省略すると、報告するだけで落ちません
 ```
+
 
 ## 関連
 

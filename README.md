@@ -93,11 +93,20 @@ gets used as if it had none.
 
 ## In CI
 
+In CI. **The action runs TypeScript directly, so the runner needs Node 22.18
+or later** -- the preinstalled version is not guaranteed to be new enough, and
+without this step you get `ERR_UNKNOWN_FILE_EXTENSION`, which says nothing
+about Node:
+
 ```yaml
+- uses: actions/checkout@v5
+- uses: actions/setup-node@v5
+  with: { node-version: "22.18" }
 - uses: quintetkit/sharedfiles@v1
   with:
     max: "0.4"   # omit to report without ever failing
 ```
+
 
 ## Related
 
