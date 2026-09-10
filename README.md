@@ -114,7 +114,7 @@ of them come from: Claude Code split into Architect / Coder / Reviewer /
 Conflict Resolver around GitHub Issues.
 
 A larger version with a UI Designer persona, the Reviewer's decision criteria,
-a per-Issue parallel execution script and a 10-chapter guide is
+a per-Issue parallel execution script and a 11-chapter guide is
 [sold as Quintet](https://quintetkit.gumroad.com/l/quintet).
 
 ## License
